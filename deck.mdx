@@ -1,1 +1,425 @@
-# VI on the command line
+export { dark as theme } from 'mdx-deck/themes'
+
+#
+
+```notes
+- we are mostly programmers here? right?
+- so last christmas I was playing board games with the kids
+- we started to play cluedo
+- I came up with a heruistinc that helped me win
+- so I decided to write a game
+- how does cluedo work? a character has committed a murder with an object in a
+  mansion. The who, with what and where are hidden in an envelope and you go
+  around acusing various people and gaining clues from the other players until
+  you are confident of who, with what, where
+- but enough of cluedo, let's write a simple program to take in the input
+    python3 -c '
+    import readline
+    while True:
+      line = input("guess: ")
+      if line == "stop":
+        break
+      print("%s" % line)'
+- now we can guess
+  - Miss Scarlet, Professor Plum, Mrs Peacock, Reverend Green, Colonel Mustard,
+    Mrs White
+  - candlestick, dagger, lead pipe, revolver, rope, spanner
+  - kitchen, ballroom, conservatory, dining room, cellar, billiard room,
+    library, lounge, hall, study
+  > It was Miss Scarlet with the dagger in the lounge
+- and Agile! fail fast and fail early, no one want's this user interface!
+- but hang on - KeyCastr ON
+- esc-enter esc-enter
+- 2w - jump 2 words
+- c2w - change 2 words
+- Reverend Green
+- enter
+- BOOM - wow
+- KeyCastr OFF
+
+---
+
+# VI everywhere
+
+  _What's your super power_
+
+* Michael Milewski
+* @saramic
+* https://failure-driven.com
+* Developer at Fresho!
+
+---
+
+# VI via readline
+
+_more like it!_
+
+```notes
+- so what was there VI'ish in the code example?
+- ^ beginning of line - just like a regex
+- $ end of line - just like a regex
+- c2w change 2 words
+- u to undo
+- these are VI shortcuts
+```
+
+---
+
+# What is VI
+
+  an editor
+
+---
+
+# Why VI is called VI?
+
+  `ex` short for `EX`tended
+
+  `ex` is a line editor
+
+```notes
+- what is a line editor
+```
+
+---
+
+# `VI` = `VI`sual
+
+  shortest unambigous abbreviation
+
+---
+
+# `VIM` = `V`i `IM`proved
+
+---
+
+# How to exit the Vim editor?
+
+```sh
+:q    # quit vi
+:wq   # write file and quit
+:q!   # quit vi not save
+:x    # write and quit
+```
+
+---
+
+# Demo - what is vi
+
+```sh
+vi            # open vi editor
+i             # insert mode
+              #   enter text
+ESC           # normal mode
+              #   special commands
+h j k l       # ⬅ ⬇ ⬆ ➡
+:             # ex mode - command mode
+/             # search
+n             # next match
+:s///         # substitute
+:q!           # quit without saving
+```
+
+---
+
+# So far
+
+* `Vi` where there is readline
+* `Vi` in the editor
+* what about everywhere?
+
+```notes
+- go back to program example and edit it
+```
+
+---
+
+# `Vi` on the command line
+
+```notes
+- so now we have vi on the command line!
+- what if I want to try?
+```
+
+---
+
+# Demo - `vi` on command line
+
+```sh
+set -o vi
+ESC             # normal mode
+/               # search
+cw              # change word
+u  .            # undo and redo
+^  $            # beginning and end
+w  W            # word and whitespace word
+b  B            # back a word
+y               # yank (copy) to end
+p               # paste
+ct<char>        # cut to character
+```
+
+---
+
+# get me out of here
+
+```sh
+
+set -o emacs    # get me out of here
+
+```
+
+---
+
+# `Emacs`
+
+```sh
+set -o | egrep 'vi |emacs'
+
+emacs          	on
+vi             	off
+```
+
+emacs shortcuts
+```sh
+CTRL A        # beginning of line
+CTRL E        # end of line
+CTRL R        # reverse search
+```
+
+---
+
+# But where is the `super power`?
+
+```notes
+- no alias
+- story didn't touc type
+- people setting up cursors to move faster
+- heck do it with your current ide
+- if you are in insert mode you are doing it wrong
+- if you use a mouse you are doing it wrong
+- have you tried this on a slow internet connection?
+- can move around quickly
+- can do edits to whole commands
+- cursor speed ok
+- no need for aliases
+```
+
+---
+
+> "2. That having no choice but to use `vi` early in my career would mean that
+  I can never leave those keybindings behind."
+
+@anaulin https://anaulin.org/blog/things-nobody-told-me-about-being-a-software-engineer/
+
+```notes
+- https://news.ycombinator.com/item?id=18445240 link to
+- https://anaulin.org/blog/things-nobody-told-me-about-being-a-software-engineer/
+- also double speed https://medium.com/@naveennegi/how-i-doubled-my-productivity-as-a-software-developer-876109ce72e2
+```
+
+---
+
+# hey how do I learn it?
+
+---
+
+# Rote
+
+---
+
+# Rote?
+
+@AdamCuppy
+
+Mechanically confident
+
+https://youtu.be/Btsx9YzhJVM
+
+```notes
+- actors lines, nerves on stage
+- Eugene Pauly
+- http://www.theshiftinside.com/pauly/
+```
+
+---
+# Pauly principle
+
+_if you repeat an action enough_
+
+_it will become automatic_
+
+_therefore effortless_
+
+---
+
+# Rote learning
+
+1. come up with a drill
+  ```
+  set -o vi
+  python -c 'print("hello")'
+  <ESC> k $ b i
+   Python
+  <RETURN>
+  set -o emacs
+  ```
+1. repeat
+
+PRACTICE, PRACTICE, PRACTICE
+
+---
+
+# The label said `EVERYWHERE!`
+
+_not just readline and command line!_
+
+```notes
+- story about mashing keyboard during sql session ESC ENTER
+- \l - list DBs
+- \c search-term_development - connect
+- \d games - describe table
+```
+
+---
+
+# Postgresql and Mysql database
+
+  ```sh
+    # psql
+
+    cat >> ~/.inputrc
+    set editing-mode vi
+
+    # mysql
+
+    cat >> ~/.editrc
+    bind -v
+  ```
+
+---
+
+# `Vi` anywhere there is ReadLine
+
+```notes
+- python3 interactive console REPL
+  - python3
+- even where there is no VI
+  - docker run --rm -it --rm ubuntu bash
+- irb             # ruby REPL
+- rails console
+- lein repl       # clojure REPL
+```
+
+---
+
+# Your super power?
+
+  * vi shortcuts?
+  * touch typing?
+  * problem solving with TDD?
+  * new language or framework?
+
+  **PRACTICE, PRACTICE, PRACTICE**
+
+---
+
+# Thank You
+
+* Michael Milewski
+* @saramic
+* https://failure-driven.com
+* Developer at Fresho!
+* https://github.com/saramic/vi-on-the-command-line
+
+---
+
+# What we learnt?
+
+    set -o vi         # get into vi mode
+    set -o emacs      # get me out of here
+
+    ESC               # go into "normal mode"
+    /                 # search for a term
+
+    **Navigation**
+    h j k l           # ⬅ ⬆ ⬇ ➡
+    gg                # top
+    G                 # bottom
+    ^                 # begninning of line (~ regex)
+    $                 # end of line        (~ regex)
+
+---
+
+# What we learnt?
+
+    **Insert mode**
+        a  A          # append after cursor/end of line
+        i  I          # insert before cursor/beginning of line
+
+    **Editing**
+        .             # redo
+        u             # undo
+        cw            # change a word
+        x  X          # delete character/previous character
+
+    w  b              # move word forward / backward
+    w4 b4             # move 4 words forward / backward
+    W  B              # move whitespace word forward / backward
+    ct <CHAR>         # change to '.' character
+    yw                # yank (copy) word
+    y4w               # yank 4 words
+
+    v                 # open vi editor
+
+---
+
+# Thank You
+
+* Michael Milewski
+* @saramic
+* https://failure-driven.com
+* Developer at Fresho!
+* https://github.com/saramic/vi-on-the-command-line
+
+---
+
+# Questions?
+
+```notes
+- display keys typed [KeyCastr](https://github.com/keycastr/keycastr)
+```
+
+---
+
+# Where do you wish there was `VI` bindings?
+
+- everywhere
+- iPhone
+- Browser
+- IDE
+
+```notes
+- literally everywhere would be good
+- have tried on iphone - not too cool -no esc key
+- in browser but not everyone has it and fails in some edit boxes, not in dev toools
+- in IDE but fails on git commit message editing
+```
+
+---
+
+# What if there is no readline?
+
+  * node
+  * iex
+  * mongodb
+
+  ```sh
+
+    brew install rlwrap
+
+    rlwrap --always-readline node
+    rlwrap --always-readline iex
+    rlwrap --always-readline mongodb
+  ```
+
