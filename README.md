@@ -2,6 +2,10 @@
 
 _What's your super power_
 
+view slides on github pages
+
+https://saramic.github.io/vi-on-the-command-line/
+
 # Development
 
 ```sh
