@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx",
+    "pdf": "mdx-deck pdf deck.mdx",
+    "image": "mdx-deck screenshot deck.mdx",
+    "help": "mdx-deck",
+    "build": "mdx-deck build deck.mdx",
+    "build-github-pages": "mdx-deck --out-dir docs build deck.mdx"
   },
   "repository": {
     "type": "git",
